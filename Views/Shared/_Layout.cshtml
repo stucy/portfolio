@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stoyan Georgiev | CV</title>
+    <link href="~/lib/toastr/build/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <!-- Navigation: Start -->
+    <nav class="navbar">
+        <div class="navbar-name"><span class="bold">Stoyan Georgiev</span> / Junior Full Stack</div>
+        <span id="mobileNav"><img src="~/images//navicon.svg" alt="Nav Icon" /></span>
+        <ul class="navbar-list" id="navigation">
+            <li><a class="scrollLink" href="#about">About</a></li>
+            <li><a class="scrollLink" href="#resume">Resume</a></li>
+            <li><a class="scrollLink" href="#projects">Projects</a></li>
+            <li><a class="scrollLink" href="#contact">Contact</a></li>
+            <li><a class="scrollLink" href="#comments">Comments</a></li>
+        </ul>
+    </nav>
+    <!-- Navigation: End -->
+
+    @RenderBody()
+
+    <!-- Footer: Start -->
+    <footer>
+        <div class="copyright">&copy; 2020 Stoyan Georgiev</div>
+        <ul>
+            <li>
+                <span>Call</span>
+                <span>+359885048855</span>
+            </li>
+            <li>
+                <span>Write</span>
+                <span>stoyang9@gmail.com</span>
+            </li>
+            <li>
+                <span>Follow</span>
+                <span>
+
+                    <a href="https://www.facebook.com/stoyan.georg/" target="_blank" rel="noopener noreferrer">
+                        <img class="social-icon" src="images//facebook-circular-logo.svg" alt="Facebook Logo" />
+                    </a>
+
+                    <a href="https://github.com/stucy" target="_blank" rel="noopener noreferrer">
+                        <img class="social-icon" src="images/github.svg" alt="Github Logo" />
+                    </a>
+
+                </span>
+            </li>
+        </ul>
+    </footer>
+    <!-- Footer: End -->
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/toastr/build/toastr.min.js"></script>
+    <script src="~/js/ajax.js" asp-append-version="true"></script>
+    @*<script src="~/js/site.js" asp-append-version="true"></script>*@
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
