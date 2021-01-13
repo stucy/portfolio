@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\My Projects\\client_server\\client_server.csproj": {}
+    "C:\\Users\\user\\Desktop\\My Projects\\ClientServer\\portfolio\\client_server.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\My Projects\\client_server\\client_server.csproj": {
+    "C:\\Users\\user\\Desktop\\My Projects\\ClientServer\\portfolio\\client_server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\My Projects\\client_server\\client_server.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Desktop\\My Projects\\ClientServer\\portfolio\\client_server.csproj",
         "projectName": "client_server",
-        "projectPath": "C:\\Users\\user\\Desktop\\My Projects\\client_server\\client_server.csproj",
+        "projectPath": "C:\\Users\\user\\Desktop\\My Projects\\ClientServer\\portfolio\\client_server.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\My Projects\\client_server\\obj\\",
+        "outputPath": "C:\\Users\\user\\Desktop\\My Projects\\ClientServer\\portfolio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
