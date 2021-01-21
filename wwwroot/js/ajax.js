@@ -1,8 +1,4 @@
 $(document).ready(() => {
-    if (localStorage.getItem('sessID') == null) {
-        let newSess = Math.random().toString(36).substr(2, 9);
-        localStorage.setItem('sessID', newSess);
-    }
 
     Number.prototype.padLeft = function (base, chr) {
         var len = (String(base || 10).length - String(this).length) + 1;
@@ -11,11 +7,12 @@ $(document).ready(() => {
 
 })
 
+//Add Comment
 $("#comment").on("keypress", e => {
     if (e.keyCode == 13) {
         let username = $('#username').val();
         let comment = $('#comment').val();
-        let session = localStorage.getItem('sessID');
+        let session = 0;
 
         /*console.log({username, comment})*/
 
@@ -80,18 +77,19 @@ $("#comment").on("keypress", e => {
     }
 })
 
+//Delete Comment
 const deleteComment = function (id, el) {
 
     if (confirm('Are you sure you want to delete your comment?')) {
 
-        let session = localStorage.getItem('sessID');
+        let userId = 0;
 
         $.ajax({
             type: 'POST',
-            url: `Comments/Delete/${id}/${session}`,
+            url: `Comments/Delete/${id}/${userId}`,
             headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
             data: {
-                "sess": session
+                "sess": userId
             },
             success: function (res) {
                 console.log(res);
@@ -119,6 +117,7 @@ const deleteComment = function (id, el) {
     }
 }
 
+//Remove Error message
 $('#username, #comment').on('keypress', function (e) {
     if (e.keyCode != 13) {
         $(this).removeClass('active');

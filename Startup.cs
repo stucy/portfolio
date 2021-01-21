@@ -26,9 +26,8 @@ namespace client_server
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSession();
 
-            services.AddDbContext<CommentsDBContext>( options =>
+            services.AddDbContext<ApplicationDBContext>( options =>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
         }
 
@@ -49,7 +48,6 @@ namespace client_server
             app.UseStaticFiles();
 
             app.UseRouting();
-            app.UseSession();
 
             app.UseAuthorization();
 

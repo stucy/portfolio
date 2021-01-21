@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using client_server.Models;
+using client_server.Data.Models;
 
 namespace client_server.Controllers
 {
     public class CommentsController : Controller
     {
-        private readonly CommentsDBContext _context;
+        private readonly ApplicationDBContext _context;
 
-        public CommentsController(CommentsDBContext context)
+        public CommentsController(ApplicationDBContext context)
         {
             _context = context;
         }
@@ -25,14 +23,10 @@ namespace client_server.Controllers
         }
 
         // POST: Comments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentId,Username,Comment,userSession,Date")] CommentsModel commentsModel)
+        public async Task<IActionResult> Create([Bind("CommentId,Username,Comment,userID,Date")] CommentsModel commentsModel)
         {
-
-            System.Diagnostics.Debug.WriteLine(commentsModel);
 
             if (ModelState.IsValid)
             {
@@ -49,16 +43,16 @@ namespace client_server.Controllers
         // POST: Comments/Delete/5/String
         [HttpPost("Comments/Delete/{id}/{session}"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id, string session)
+        public async Task<IActionResult> DeleteConfirmed(int commentId, int UserId)
         {
-            var commentsModel = await _context.Comments.FindAsync(id);
+            var commentsModel = await _context.Comments.FindAsync(commentId);
 
             if(commentsModel == null)
             {
                 return Json(new { communicationCode = 0, comModel = commentsModel});
             }
 
-            if(commentsModel.userSession == session)
+            if(commentsModel.UserId == UserId && UserId != 0)
             {
                 _context.Comments.Remove(commentsModel);
                 await _context.SaveChangesAsync();
@@ -66,7 +60,7 @@ namespace client_server.Controllers
                 return Json(new { communicationCode = 1, comModel = commentsModel });
             }
 
-            return Json(new { communicationCode = 2, comModel = commentsModel, sess = session });
+            return Json(new { communicationCode = 2, comModel = commentsModel, sess = UserId });
         }
 
     }

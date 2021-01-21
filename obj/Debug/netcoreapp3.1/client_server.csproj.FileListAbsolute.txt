@@ -327,10 +327,6 @@ C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1
 C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\client_server.TagHelpers.input.cache
 C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\client_server.TagHelpers.output.cache
 C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\client_server.RazorCoreGenerate.cache
-C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Create.cshtml.g.cs
-C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Delete.cshtml.g.cs
-C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Details.cshtml.g.cs
-C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Edit.cshtml.g.cs
 C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
 C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\user\Desktop\My Projects\ClientServer\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
