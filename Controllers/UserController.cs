@@ -1,11 +1,11 @@
 ﻿using client_server.Data.Models;
 using client_server.Models;
+using client_server.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Schools.Services.Interfaces;
 using System.Threading.Tasks;
 
-namespace Schools.Controllers
+namespace client_server.Controllers
 {
     public class UserController : Controller
     {
@@ -14,7 +14,7 @@ namespace Schools.Controllers
         private readonly IUserService userService;
 
         public UserController(UserManager<UsersModel> userManager,
-                                 SignInManager<UsersModel> signInManager)
+                                 SignInManager<UsersModel> signInManager, IUserService userService)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
@@ -24,7 +24,6 @@ namespace Schools.Controllers
         [HttpPost]
         public async Task<IActionResult> Register([Bind("UserName,Email,Password")] RegisterModel model)
         {
-            return Json(new { communicationCode = 0, comment = model });
 
             if (!ModelState.IsValid)
             {

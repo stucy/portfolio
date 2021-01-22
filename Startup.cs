@@ -1,7 +1,9 @@
+using client_server.Data.Models;
 using client_server.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,8 +29,9 @@ namespace client_server
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<ApplicationDBContext>( options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            services.AddDbContext<ApplicationDBContext>(options =>
+               options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,7 +1,7 @@
 ﻿using client_server.Models;
 using System.Threading.Tasks;
 
-namespace Schools.Services.Interfaces
+namespace client_server.Services.Interfaces
 {
     public interface IUserService
     {

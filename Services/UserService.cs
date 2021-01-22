@@ -1,22 +1,18 @@
 ﻿using client_server.Data.Models;
 using client_server.Models;
+using client_server.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Schools.Services.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace Schools.Services
+namespace client_server.Services
 {
     public class UserService : IUserService
     {
-        private readonly ApplicationDBContext data;
         private readonly UserManager<UsersModel> userManager;
 
-        public UserService(ApplicationDBContext data,
-                           UserManager<UsersModel> userManager)
+        public UserService(UserManager<UsersModel> userManager)
         {
-            this.data = data;
             this.userManager = userManager;
         }
 

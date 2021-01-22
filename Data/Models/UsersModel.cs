@@ -9,6 +9,5 @@ namespace client_server.Data.Models
 {
     public class UsersModel : IdentityUser
     {
-
     }
 }

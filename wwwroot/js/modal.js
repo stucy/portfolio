@@ -17,7 +17,11 @@ $('#openRegister').click(() => {
     $('#login').removeClass('open');
 });
 
-$('#backdrop.active').click(() => {
-    $('.modal.open').removeClass('open');
-    $('#backdrop').removeClass('active');
+$('#backdrop').click(() => {
+
+    if ($('#backdrop').hasClass('active')) {
+        $('.modal.open').removeClass('open');
+        $('#backdrop').removeClass('active');
+    }
+
 });
