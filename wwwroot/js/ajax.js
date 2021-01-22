@@ -123,3 +123,50 @@ $('#username, #comment').on('keypress', function (e) {
         $(this).removeClass('active');
     }
 })
+
+//Regiser
+$('#registerSubmit').click(() => {
+    let username = $('#register_username').val();
+    let email = $('#register_email').val();
+    let pass1 = $('#register_pass1').val();
+    let pass2 = $('#register_pass2').val();
+
+    console.log({ username, email, pass1, pass2 });
+
+    if (pass1 != pass2) {
+        toastr.warning("Passwords do not match!");
+        return;
+    }
+
+    if (username == '' || email == '' || pass1 == '') {
+        toastr.warning('Please fill all of the inputs!');
+        return
+    }
+
+    let model = { UserName: username, Email: email, Password: pass1 }
+
+    $.ajax({
+        type: 'POST',
+        url: `User/Register/`,
+        data: JSON.stringify(model),
+        success: function (res) {
+            console.log(res);
+
+
+        },
+        error: function (err) {
+            console.log(err);
+            toastr.warning('Oops! Something went wrong!');
+        }
+    });
+
+})
+
+//Login
+$('#loginSubmit').click(() => {
+    let username = $('#username').val();
+    let pass = $('#password').val();
+
+    console.log({ username, pass });
+
+})

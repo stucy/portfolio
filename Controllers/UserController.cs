@@ -2,6 +2,7 @@
 using client_server.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Schools.Services.Interfaces;
 using System.Threading.Tasks;
 
 namespace Schools.Controllers
@@ -10,39 +11,29 @@ namespace Schools.Controllers
     {
         private readonly UserManager<UsersModel> userManager;
         private readonly SignInManager<UsersModel> signInManager;
-        /*private readonly IUserService userService;*/
+        private readonly IUserService userService;
 
         public UserController(UserManager<UsersModel> userManager,
                                  SignInManager<UsersModel> signInManager)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
-            /*this.userService = userService;*/
-        }
-
-        [HttpGet]
-        public IActionResult Register()
-        {
-            return View(nameof(Register));
+            this.userService = userService;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterModel model)
+        public async Task<IActionResult> Register([Bind("UserName,Email,Password")] RegisterModel model)
         {
+            return Json(new { communicationCode = 0, comment = model });
+
             if (!ModelState.IsValid)
             {
-                return View();
+                return Json(new { communicationCode = 0, comment = model });
             }
 
-            /*await this.userService.Create(model);*/
+            await this.userService.Create(model);
 
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Login()
-        {
-            return View(nameof(Login));
+            return Json(new { communicationCode = 1, comment = model });
         }
 
         [HttpPost]
@@ -65,7 +56,7 @@ namespace Schools.Controllers
                 return View(nameof(Login), model);
             }
 
-            return RedirectToAction("Index", "Student");
+            return RedirectToAction("Index", "Comments");
         }
     }
 }

@@ -13,7 +13,5 @@ namespace client_server.Models
 
         public string Password { get; set; }
 
-        public string ConfirmPassword { get; set; }
-
     }
 }
