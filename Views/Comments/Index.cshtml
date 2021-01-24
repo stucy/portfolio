@@ -241,7 +241,7 @@
                             @Html.DisplayFor(modelItem => item.Comment)
                             <span class="date">
                                 @Html.DisplayFor(modelItem => item.Date)
-                                <span class="delete" onclick="deleteComment(@Html.DisplayFor(modelItem => item.CommentId))">x</span>
+                                <span class="delete" onclick="deleteComment(@Html.DisplayFor(modelItem => item.CommentId), this)">x</span>
                             </span>
                         </li>
                     }

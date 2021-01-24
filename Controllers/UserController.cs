@@ -22,7 +22,7 @@ namespace client_server.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> Register([Bind("UserName,Email,Password")] RegisterModel model)
+    public async Task<IActionResult> Register(RegisterModel model)
     {
 
       if (!ModelState.IsValid)

@@ -38,7 +38,7 @@ namespace client_server
       services.AddTransient<IUserService, UserService>();
       services.AddIdentity<UsersModel, IdentityRole>(options =>
         {
-          options.Password.RequiredLength = 6;
+          options.Password.RequiredLength = 3;
           options.Password.RequireDigit = false;
           options.Password.RequireLowercase = false;
           options.Password.RequireNonAlphanumeric = false;

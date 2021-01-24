@@ -14,21 +14,15 @@ $("#comment").on("keypress", e => {
         let comment = $('#comment').val();
         let userId = $('#user_id').val();
 
-        console.log({ username, comment, userId })
+        console.log({ username, comment, userId})
 
         if (username != '' && comment != '') {
 
             let currentdate = new Date();
-            let date = [currentdate.getDate().padLeft(),
-            (currentdate.getMonth() + 1).padLeft(),
-            currentdate.getFullYear()].join('/') + ' ' +
-                [currentdate.getHours().padLeft(),
-                currentdate.getMinutes().padLeft(),
-                currentdate.getSeconds().padLeft()].join(':') + ' ';
 
-            console.log(date);
+            let date = currentdate.toLocaleString();
 
-            let model = { Username: username, Comment: comment, UserId: userId}
+            let model = { Username: username, Comment: comment, UserId: userId, Date: date }
 
             $.ajax({
                 type: 'POST',
@@ -49,7 +43,6 @@ $("#comment").on("keypress", e => {
 
                         let commentEl = `<li><span class="username">${username}:</span>${comment}<span class="date">${date}<span class="delete" onclick="deleteComment(${res.comment.commentId}, this)">x</span></span></li>`;
                         document.getElementById('commentContainer').insertAdjacentHTML('afterbegin', commentEl);
-                        $('#username').val('');
                         $('#comment').val('');
 
                     } else {
@@ -77,15 +70,18 @@ $("#comment").on("keypress", e => {
 })
 
 //Delete Comment
-const deleteComment = function (id) {
+const deleteComment = function (id, el) {
 
     if (confirm('Are you sure you want to delete your comment?')) {
 
         let userId = $('#user_id').val();
 
+        let model = { CommentId: id, UserId: userId }
+
         $.ajax({
             type: 'POST',
-            url: `Comments/Delete/${id}/${userId}`,
+            url: `Comments/Delete/`,
+            data: model,
             headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
             success: function (res) {
                 console.log(res);
