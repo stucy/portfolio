@@ -1,4 +1,5 @@
 ﻿using client_server.Data.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace client_server.Models
 {
-    public class ApplicationDBContext:DbContext
-    {
+    public class ApplicationDBContext: IdentityDbContext<UsersModel>
+  {
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options):base(options) {}
 
         public DbSet<CommentsModel> Comments { get; set; }
-
-        public DbSet<UsersModel> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

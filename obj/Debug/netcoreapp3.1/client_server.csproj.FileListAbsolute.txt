@@ -496,10 +496,6 @@ C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\scopedcss\bundle\clien
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.TagHelpers.input.cache
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.TagHelpers.output.cache
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.RazorCoreGenerate.cache
-C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Create.cshtml.g.cs
-C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Delete.cshtml.g.cs
-C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Details.cshtml.g.cs
-C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Edit.cshtml.g.cs
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
@@ -513,3 +509,8 @@ C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.csproj.C
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.dll
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.pdb
 C:\Users\Stoyan\Desktop\portfolio\obj\Debug\netcoreapp3.1\client_server.genruntimeconfig.cache
+C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

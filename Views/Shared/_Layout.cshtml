@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using client_server.Data.Models
+@inject SignInManager<UsersModel> SignInManager
+@inject UserManager<UsersModel> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -19,14 +24,29 @@
             <li><a class="scrollLink" href="#projects">Projects</a></li>
             <li><a class="scrollLink" href="#contact">Contact</a></li>
             <li><a class="scrollLink" href="#comments">Comments</a></li>
-            <li><a class="scrollLink" href="#login" data-target="#login" data-toggle="modal">Login</a></li>
-            <li><a class="scrollLink" href="#">Logout</a></li>
+            @if (SignInManager.IsSignedIn(User))
+            {
+                <li><a asp-action="Logout" asp-controller="User">Logout</a></li>
+            }
+            else
+            {
+                <li><a href="#login" data-target="#login" data-toggle="modal">Login</a></li>
+            }
         </ul>
     </nav>
     <!-- Navigation: End -->
 
     @RenderBody()
 
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <input id="user_id" value="@UserManager.GetUserId(User)" type="hidden"/>
+    }
+    else
+    {
+        <input id="user_id" value="guest" type="hidden" />
+    }
     <!-- Login Modal: Start -->
     <div class="modal" id="login">
         <div class="modal-header">
@@ -37,12 +57,12 @@
 
             <div class="form-group">
                 <label class="input-label">Username</label>
-                <input type="text" id="username"/>
+                <input type="text" id="login_username" />
             </div>
 
             <div class="form-group">
                 <label class="input-label">Password</label>
-                <input type="text" id="password"/>
+                <input type="password" id="login_password" />
             </div>
 
             <button class="modal-btn" id="loginSubmit">Login</button>
@@ -51,7 +71,6 @@
         </div>
     </div>
     <!-- Login Modal: End -->
-
     <!-- Register Modal: Start -->
     <div class="modal" id="register">
         <div class="modal-header">
@@ -62,22 +81,22 @@
 
             <div class="form-group">
                 <label class="input-label">Username</label>
-                <input type="text" id="register_username"/>
+                <input type="text" id="register_username" />
             </div>
 
             <div class="form-group">
                 <label class="input-label">Email</label>
-                <input type="text"  id="register_email"/>
+                <input type="text" id="register_email" />
             </div>
 
             <div class="form-group">
-                <label class="input-label" >Password</label>
-                <input type="password" id="register_pass1"/>
+                <label class="input-label">Password</label>
+                <input type="password" id="register_pass1" />
             </div>
 
             <div class="form-group">
                 <label class="input-label">Confirm Password</label>
-                <input type="password" id="register_pass2"/>
+                <input type="password" id="register_pass2" />
             </div>
 
             <button class="modal-btn" id="registerSubmit">Register</button>

@@ -12,30 +12,29 @@ $("#comment").on("keypress", e => {
     if (e.keyCode == 13) {
         let username = $('#username').val();
         let comment = $('#comment').val();
-        let session = 0;
+        let userId = $('#user_id').val();
 
-        /*console.log({username, comment})*/
+        console.log({ username, comment, userId })
 
         if (username != '' && comment != '') {
 
-            var currentdate = new Date();
-            var date = currentdate.getDate() + "-"
-                + (currentdate.getMonth() + 1) + "-"
-                + currentdate.getFullYear() + "  "
-                + currentdate.getHours() + ":"
-                + currentdate.getMinutes() + ":"
-                + currentdate.getSeconds();
+            let currentdate = new Date();
+            let date = [currentdate.getDate().padLeft(),
+            (currentdate.getMonth() + 1).padLeft(),
+            currentdate.getFullYear()].join('/') + ' ' +
+                [currentdate.getHours().padLeft(),
+                currentdate.getMinutes().padLeft(),
+                currentdate.getSeconds().padLeft()].join(':') + ' ';
+
+            console.log(date);
+
+            let model = { Username: username, Comment: comment, UserId: userId}
 
             $.ajax({
                 type: 'POST',
                 url: "Comments/Create",
                 headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
-                data: {
-                    "Username": username,
-                    "Comment": comment,
-                    "userSession": session,
-                    "Date": date
-                },
+                data: model,
                 success: function (res) {
                     console.log(res);
 
@@ -43,7 +42,7 @@ $("#comment").on("keypress", e => {
 
                         let date =  [currentdate.getDate().padLeft(),
                                     (currentdate.getMonth() + 1).padLeft(),
-                                    currentdate.getFullYear()].join('.') + ' ' +
+                                    currentdate.getFullYear()].join('/') + ' ' +
                                     [currentdate.getHours().padLeft(),
                                     currentdate.getMinutes().padLeft(),
                                     currentdate.getSeconds().padLeft()].join(':') + ' ';
@@ -78,19 +77,16 @@ $("#comment").on("keypress", e => {
 })
 
 //Delete Comment
-const deleteComment = function (id, el) {
+const deleteComment = function (id) {
 
     if (confirm('Are you sure you want to delete your comment?')) {
 
-        let userId = 0;
+        let userId = $('#user_id').val();
 
         $.ajax({
             type: 'POST',
             url: `Comments/Delete/${id}/${userId}`,
             headers: { "RequestVerificationToken": $('input[name="__RequestVerificationToken"]').val() },
-            data: {
-                "sess": userId
-            },
             success: function (res) {
                 console.log(res);
 
@@ -148,10 +144,27 @@ $('#registerSubmit').click(() => {
     $.ajax({
         type: 'POST',
         url: `User/Register/`,
-        data: JSON.stringify(model),
+        data: model,
         success: function (res) {
-            console.log(res);
 
+            console.log(res);
+            if (res.communicationCode == 0) {
+                toastr.warning("There was an error with your registration");
+            }
+            else if (res.communicationCode == 1) {
+                toastr.success('You have successfully registered! Please login!');
+
+                $('#register_username').val('');
+                $('#register_email').val('');
+                $('#register_pass1').val('');
+                $('#register_pass2').val('');
+
+                $('#register').removeClass('open');
+                $('#backdrop').removeClass('active');
+            }
+            else if (res.communicationCode == 2) {
+                toastr.warning("This email is already taken!");
+            }
 
         },
         error: function (err) {
@@ -164,9 +177,45 @@ $('#registerSubmit').click(() => {
 
 //Login
 $('#loginSubmit').click(() => {
-    let username = $('#username').val();
-    let pass = $('#password').val();
+    let username = $('#login_username').val();
+    let pass = $('#login_password').val();
 
     console.log({ username, pass });
 
+    let model = { Email: username, Password: pass };
+
+    $.ajax({
+        type: 'POST',
+        url: `User/Login/`,
+        data: model,
+        success: function (res) {
+            console.log(res);
+
+            if (res.communicationCode == 0) {
+                toastr.warning('This user does not exist!');
+            }
+            else if (res.communicationCode == 1) {
+                toastr.warning('Wrong Email or Pasword!');
+            }
+            else if (res.communicationCode == 2) {
+                window.location.reload();
+            }
+
+        },
+        error: function (err) {
+            console.log(err);
+            toastr.warning('Oops! Something went wrong!');
+        }
+    });
+
 })
+
+$('#mobileNav').click(() => {
+    $('#navigation').toggleClass('active');
+});
+
+$("a.scrollLink").click(function (event) {
+    event.preventDefault();
+    $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
+    $('#navigation').removeClass('active');
+});

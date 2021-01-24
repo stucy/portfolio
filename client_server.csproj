@@ -9,13 +9,21 @@
     <Compile Remove="Migrations\20210121123007_Initial.Designer.cs" />
     <Compile Remove="Migrations\20210121123629_Initial.cs" />
     <Compile Remove="Migrations\20210121123629_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20210122131123_Initial.cs" />
+    <Compile Remove="Migrations\20210122131123_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20210124095655_Initial.cs" />
+    <Compile Remove="Migrations\20210124095655_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20210124113721_Initial.cs" />
+    <Compile Remove="Migrations\20210124113721_Initial.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />

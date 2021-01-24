@@ -1,8 +1,14 @@
-﻿@model IEnumerable<client_server.Data.Models.CommentsModel>
+﻿@using client_server.Data.Models
+@model IEnumerable<client_server.Data.Models.CommentsModel>
 @using Microsoft.AspNetCore.Antiforgery
 @inject IAntiforgery antiforgery
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UsersModel> SignInManager
+@inject UserManager<UsersModel> UserManager
 @{
-    var token = antiforgery.GetAndStoreTokens(Context).RequestToken;
+  var token = antiforgery.GetAndStoreTokens(Context).RequestToken;
+  var userId = UserManager.GetUserId(User);
+  var userData = UserManager.FindByIdAsync(userId).Result;
 }
 
 <!-- Page Start -->
@@ -214,24 +220,31 @@
 
         <div class="comment-container">
             <div class="form-group">
-                <input type="text" placeholder="Username" id="username">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <input type="text" placeholder="Username" value="@userData.UserName" id="username" disabled>
+                }
+                else
+                {
+                    <input type="text" placeholder="Username" id="username">
+                }
                 <input type="text" placeholder="Comment" id="comment">
                 <input type="hidden" id="RequestVerificationToken" name="__RequestVerificationToken" value="@token" />
             </div>
 
             <div class="comments">
                 <ul id="commentContainer">
-                     @foreach (var item in Model)
-                        {
+                    @foreach (var item in Model)
+                    {
                         <li>
                             <span class="username">@Html.DisplayFor(modelItem => item.Username):</span>
                             @Html.DisplayFor(modelItem => item.Comment)
                             <span class="date">
-                                @Html.DisplayFor(modelItem => item.Date) 
-                                <span class="delete" onclick="deleteComment(@Html.DisplayFor(modelItem => item.CommentId), this)">x</span>
+                                @Html.DisplayFor(modelItem => item.Date)
+                                <span class="delete" onclick="deleteComment(@Html.DisplayFor(modelItem => item.CommentId))">x</span>
                             </span>
                         </li>
-                        }
+                    }
                 </ul>
             </div>
         </div>

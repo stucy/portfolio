@@ -25,7 +25,7 @@ namespace client_server.Controllers
         // POST: Comments/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CommentId,Username,Comment,userID,Date")] CommentsModel commentsModel)
+        public async Task<IActionResult> Create(CommentsModel commentsModel)
         {
 
             if (ModelState.IsValid)
@@ -41,9 +41,9 @@ namespace client_server.Controllers
 
 
         // POST: Comments/Delete/5/String
-        [HttpPost("Comments/Delete/{id}/{session}"), ActionName("Delete")]
+        [HttpPost("Comments/Delete/{id}/{userId}"), ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int commentId, int UserId)
+        public async Task<IActionResult> DeleteConfirmed(int commentId, string UserId)
         {
             var commentsModel = await _context.Comments.FindAsync(commentId);
 
@@ -52,7 +52,7 @@ namespace client_server.Controllers
                 return Json(new { communicationCode = 0, comModel = commentsModel});
             }
 
-            if(commentsModel.UserId == UserId && UserId != 0)
+            if(commentsModel.UserId == UserId)
             {
                 _context.Comments.Remove(commentsModel);
                 await _context.SaveChangesAsync();
