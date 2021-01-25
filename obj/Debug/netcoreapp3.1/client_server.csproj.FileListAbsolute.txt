@@ -514,3 +514,8 @@ C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.C
 C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Stoyan\Desktop\portfolio\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\user\Desktop\My Projects\ClientServer\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\user\Desktop\My Projects\ClientServer\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\user\Desktop\My Projects\ClientServer\portfolio\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\user\Desktop\My Projects\ClientServer\portfolio\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\user\Desktop\My Projects\ClientServer\portfolio\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

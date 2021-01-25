@@ -20,9 +20,9 @@ $("#comment").on("keypress", e => {
 
             let currentdate = new Date();
 
-            let date = currentdate.toLocaleString();
+            /*let date = currentdate.toLocaleString();*/
 
-            let model = { Username: username, Comment: comment, UserId: userId, Date: date }
+            let model = { Username: username, Comment: comment, UserId: userId}
 
             $.ajax({
                 type: 'POST',
@@ -36,7 +36,7 @@ $("#comment").on("keypress", e => {
 
                         let date =  [currentdate.getDate().padLeft(),
                                     (currentdate.getMonth() + 1).padLeft(),
-                                    currentdate.getFullYear()].join('/') + ' ' +
+                                    currentdate.getFullYear()].join('.') + ' ' +
                                     [currentdate.getHours().padLeft(),
                                     currentdate.getMinutes().padLeft(),
                                     currentdate.getSeconds().padLeft()].join(':') + ' ';

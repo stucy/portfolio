@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using client_server.Models;
 using client_server.Data.Models;
+using System;
 
 namespace client_server.Controllers
 {
@@ -30,6 +31,7 @@ namespace client_server.Controllers
 
       if (ModelState.IsValid)
       {
+        commentsModel.Date = DateTime.UtcNow;
         _context.Add(commentsModel);
         await _context.SaveChangesAsync();
 
