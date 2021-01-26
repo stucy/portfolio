@@ -1,20 +1,16 @@
 using client_server.Data.Models;
+using client_server.Extensions;
 using client_server.Models;
 using client_server.Services;
 using client_server.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace client_server
 {
@@ -70,6 +66,8 @@ namespace client_server
 
       app.UseAuthorization();
       app.UseAuthentication();
+
+      app.ApplyMigrations();
 
       app.UseEndpoints(endpoints =>
       {
